@@ -1,4 +1,4 @@
-# source this file to apply config
+# source this file in .zshrc to apply config
 #
 # AUTHOR: at2er (xb0515@outlook.com)
 # LICENSE: MIT LICENSE
@@ -6,9 +6,12 @@
 # prompt
 PROMPT_EXIT_CODE='%B%F{red}%(?..%? )%f%b'
 PROMPT_DIR='%1~'
-PROMPT_SYMBOL='%(!.%B%F{red}#%f%b.%B%F{green}>%f%b)'
-PROMPT="${PROMPT_EXIT_CODE}${PROMPT_DIR} ${PROMPT_SYMBOL} "
+#PROMPT_SYMBOL='%(!.%B%F{red}#%f%b.%B%F{green}>%f%b)'
+PROMPT_SYMBOL='%(?.%B%F{green}>%f%b.%B%F{red}>%f%b)'
+PROMPT_ROOT='%(!.%B%F{red}[ROOT]%f%b.)'
+PROMPT="${PROMPT_ROOT}${PROMPT_EXIT_CODE}${PROMPT_DIR} ${PROMPT_SYMBOL} "
 
+# history
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
@@ -17,6 +20,23 @@ setopt extended_history
 setopt histignorespace
 setopt share_history
 setopt hist_ignore_dups
+
+# alias
+alias s="neofetch"
+alias ls="ls --color=auto"
+alias ll="ls -l"
+alias gs="git status"
+alias gll="git log --oneline"
+alias spm="sudo pacman"
+alias ra="ranger"
+alias tm="tmux"
+alias tma="tmux attach"
+#alias jo="joshuto"
+alias screen-capture="ffmpeg -video_size 1440x900 -framerate 24 -f x11grab -i $DISPLAY -f pulse -i 0 output.mp4"
+alias lg="lazygit"
+alias mt="neomutt"
+alias vi="nvim"
+#alias dotfiles="git --git-dir=\"$HOME/.dotfiles/\" --work-tree=\"$HOME\""
 
 autoload -U compinit && compinit
 
@@ -39,19 +59,6 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[1;32m'
-
-alias s="neofetch"
-alias ls="ls --color=auto"
-alias ll="ls -l"
-alias gs="git status"
-alias gll="git log --oneline"
-alias spm="sudo pacman"
-alias ra="ranger"
-alias tm="tmux"
-alias tma="tmux attach"
-alias jo="joshuto"
-alias screen-capture="ffmpeg -video_size 1440x900 -framerate 24 -f x11grab -i $DISPLAY -f pulse -i 0 output.mp4"
-#alias dotfiles="git --git-dir=\"$HOME/.dotfiles/\" --work-tree=\"$HOME\""
 
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
